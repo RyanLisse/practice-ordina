@@ -19,6 +19,6 @@ test('returns false for a CIN with invalid characters', () => {
 });
 
 test('returns false for a CIN with an invalid checksum', () => {
-  const invalidChecksumCIN = '17000372214423';
+  const invalidChecksumCIN = '42100551007974';
   expect(isValidCin(invalidChecksumCIN)).toBe(false);
 });

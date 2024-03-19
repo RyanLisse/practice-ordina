@@ -1,5 +1,12 @@
 import { Inventory } from '../model/types.ts';
 
+/**
+ * Calculates the updated inventory based on the starting inventory and transaction log.
+ *
+ * @param {Inventory} startInventory - The initial inventory object.
+ * @param {string} transactionLog - The log of transactions to process.
+ * @return {Inventory} The updated inventory after processing all transactions.
+ */
 export function calculateInventory(
   startInventory: Inventory,
   transactionLog: string
@@ -9,7 +16,9 @@ export function calculateInventory(
     const [cin, transactionType, quantityStr] = transaction.split(' ');
     const quantity = parseInt(quantityStr, 10);
 
-    updatedInventory[cin] = updatedInventory[cin] || 0;
+    if (!updatedInventory[cin]) {
+      updatedInventory[cin] = 0;
+    }
 
     if (transactionType === 'INCOMING') {
       updatedInventory[cin] += quantity;

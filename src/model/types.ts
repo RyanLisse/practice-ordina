@@ -1,21 +1,15 @@
-export type Inventory = {
-  [cin: string]: number;
-};
+export type Inventory = Record<string, number>;
 
-export interface Transaction {
+export interface TransactionEntry {
   cin: string;
-  publicationType: string;
-  quantitySold: number;
+  transactionType: 'INCOMING' | 'OUTGOING';
+  quantity: number;
 }
 
 export class BestSeller {
-  readonly cin: string;
-  readonly publicationType: string;
-  readonly quantitySold: number;
-
-  constructor(cin: string, publicationType: string, quantitySold: number) {
-    this.cin = cin;
-    this.publicationType = publicationType;
-    this.quantitySold = quantitySold;
-  }
+  constructor(
+    public readonly cin: string,
+    public readonly publicationType: string,
+    public readonly quantitySold: number
+  ) {}
 }
